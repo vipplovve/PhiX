@@ -11,4 +11,5 @@ How to use :-
 you should have MySQL and python as well as Kivy module installed in your workstation.
 
 there are about 3 different images which can be used as background for the app(currently i have set BG1 as the bg image).
+
 peace:)
