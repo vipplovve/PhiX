@@ -1,0 +1,980 @@
+Manager:
+    Password:
+    Menu:
+    Calculator:
+    Log:
+    Trigonometry:
+    Records:
+    Insert:
+    Update:
+    Search:
+    Delete:
+
+<Password>:
+    name: 'Pass'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:1
+            size: root.width, root.height
+            Label:
+                text: 'Welcome To ØX'
+                font_size:48
+                font_name:'Lhandw'
+
+            Label:
+                text: 'By Viplove Tyagi'
+                font_size:18
+                font_name:'Lhandw'
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: 'Enter Your Name: '
+                font_size: 30
+                font_name:'Lhandw'
+
+            TextInput:
+                multiline: False
+                id: name
+                font_name:'Lhandw'
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_size: 30
+
+            Label:
+
+                text: 'Enter Your Password: '
+                font_size: 30
+                font_name:'Lhandw'
+
+            TextInput:
+                multiline: False
+                id: passw
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_name:'Lhandw'
+                font_size: 30
+
+        Button:
+            size_hint:(1,.4)
+            text: 'Submit'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            font_size: 30
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                root.check(name,passw)
+                app.root.current= 'Menu'
+                app.root.transition.direction='left'
+
+        Button:
+            size_hint: (1,.4)
+            text: 'Quit'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            font_size: 30
+            on_release: root.bye()
+
+<Menu>:
+    name: 'Menu'
+    Image:
+        source: 'BG1.jpg'
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:2
+
+            GridLayout:
+                cols:1
+
+                Label:
+                    text: 'Welcome! '
+                    font_name:'Lhandw'
+                    font_size: 22
+
+                Label:
+                    text: 'What Do You Want To Do?'
+                    font_size: 22
+                    font_name:'Lhandw'
+
+        Button:
+
+            text:'Algebraic Calculations'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current= 'Calculator'
+                app.root.transition.direction='left'
+
+        Button:
+
+            text: 'Trigonometric Calculations'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current='Trigonometry'
+                app.root.transition.direction='left'
+
+        Button:
+
+            text: 'Logarithmic Calculations'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current='Log'
+                app.root.transition.direction='left'
+
+        Button
+
+            text: 'Access Records'
+            background_color: (157/255,157/255,167/255,1)
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            font_size: 22
+            on_release:
+                app.root.current='Records'
+                app.root.transition.direction='left'
+
+        Button:
+
+            text: 'Go Back'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current='Pass'
+                root.manager.transition.direction='right'
+
+<Calculator>:
+    name: 'Calculator'
+    Image:
+        source: 'BG1.jpg'
+
+    BoxLayout:
+
+        orientation : 'vertical'
+        size: root.width, root.height
+
+        TextInput:
+            id: val
+            text: '0'
+            font_name:'Lhandw'
+            valign: 'middle'
+            halign: 'right'
+            font_size: 48
+            size_hint: (1,.15)
+
+        GridLayout:
+            cols: 4
+            rows:6
+
+            Button:
+                id: clear
+                size_hint:(.2,.2)
+                font_size: 28
+                text: 'C'
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    root.clear()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: u'\u00AB'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.slice()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: 'e'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(2.71828)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                background_color: (157/255,157/255,167/255,1)
+                text: 'π'
+                on_release: root.use(3.14159)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '1'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(1)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '2'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(2)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '3'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(3)
+
+            Button:
+                id:add
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '+'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.add()
+
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '4'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(4)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '5'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(5)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '6'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(6)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '-'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.sub()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '7'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(7)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '8'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(8)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '9'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(9)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '*'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.mul()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '1/x'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.inv()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '0'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use(0)
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '.'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.use('.')
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '/'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.div()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: 'Go Back'
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Menu'
+                    root.manager.transition.direction='right'
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: 'Factorial'
+                background_color: (157/255,157/255,167/255,1)
+                on_release:   root.factorial()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: 'Exponent'
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.exp()
+
+            Button:
+                size_hint:(.2,.2)
+                font_size: 28
+                text: '='
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.ans()
+
+<Log>:
+    name: 'Log'
+    Image:
+        source: 'BG1.jpg'
+
+    GridLayout:
+        cols:2
+        size: root.width, root.height
+
+        Label:
+            text: 'The Base: '
+            font_size: 30
+            font_name:'Lhandw'
+            size_hint: (1,.3)
+
+        TextInput:
+            id: baseval
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_name:'Lhandw'
+            font_size: 48
+            size_hint: (1,.3)
+
+        Label:
+            text: 'The Number: '
+            font_name:'Lhandw'
+            font_size: 30
+            size_hint: (1,.3)
+
+        TextInput:
+            id: no
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_name:'Lhandw'
+            font_size: 48
+            size_hint: (1,.3)
+
+        Label:
+            text: 'The Log. Value: '
+            font_name:'Lhandw'
+            font_size: 30
+            size_hint: (1,.3)
+
+        TextInput:
+            id: logval
+            font_name:'Lhandw'
+            valign: 'middle'
+            halign: 'center'
+            multiline: 'true'
+            font_size: 48
+            size_hint: (1,.3)
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Calculate Logarithmic Value'
+            on_release: root.logarithm()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Calculate Antilogarithm'
+            on_release: root.antilogarithm()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Go Back'
+            on_release:
+                app.root.current='Menu'
+                root.manager.transition.direction='right'
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Clear'
+            on_release: root.clear()
+
+<Trigonometry>:
+    name: 'Trigonometry'
+    Image:
+        source: 'BG1.jpg'
+
+    GridLayout:
+        cols:2
+        size: root.width, root.height
+
+        Label:
+            text: 'Enter Angle in Degrees: '
+            font_size: 28
+            font_name:'Lhandw'
+            size_hint: (1,.3)
+
+        TextInput:
+            id: theta
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_name:'Lhandw'
+            font_size: 48
+            size_hint: (1,.3)
+
+        Label:
+            text: 'Answer: '
+            font_size: 30
+            font_name:'Lhandw'
+            size_hint: (1,.3)
+
+        TextInput:
+            id: trigo
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_name:'Lhandw'
+            font_size: 48
+            size_hint: (1,.3)
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Sin(x)'
+            on_release: root.sin()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Cos(x)'
+            on_release: root.cos()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Tan(x)'
+            on_release: root.tan()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Cosec(x)'
+            on_release: root.cosec()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Sec(x)'
+            on_release: root.sec()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Cot(x)'
+            on_release: root.cot()
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Go Back'
+            on_release:
+                app.root.current= 'Menu'
+                root.manager.transition.direction='right'
+
+        Button:
+            size_hint: (1,.3)
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            text: 'Clear'
+            on_release: root.clear()
+
+<Records>:
+    name: 'Records'
+    Image:
+        source: 'BG1.jpg'
+
+    BoxLayout:
+
+        orientation: 'vertical'
+        size: root.width, root.height
+        spacing: 30
+        padding: 30
+
+        Label:
+            text: 'What Do You Want To Do? '
+            font_size: 30
+            font_name:'Lhandw'
+
+        Button:
+            text: 'Insert New Records'
+            font_size: 22
+            size_hint:(.4,.4)
+            background_color: (157/255,157/255,167/255,1)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            on_release:
+                app.root.current= 'Insert'
+                root.manager.transition.direction= 'left'
+
+        Button:
+            text: 'Update Existing Records'
+            font_size: 22
+            size_hint:(.4,.4)
+            background_color: (157/255,157/255,167/255,1)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            on_release:
+                app.root.current= 'Update'
+                root.manager.transition.direction= 'left'
+
+        Button:
+            text: 'Delete Existing Records'
+            font_size: 22
+            size_hint:(.4,.4)
+            background_color: (157/255,157/255,167/255,1)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            on_release:
+                app.root.current= 'Delete'
+                root.manager.transition.direction= 'left'
+
+        Button:
+            text: 'Search & Display Records'
+            font_size: 22
+            size_hint:(.4,.4)
+            background_color: (157/255,157/255,167/255,1)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            on_release:
+                app.root.current= 'Search'
+                root.manager.transition.direction= 'left'
+
+        Button:
+            text: 'Go Back'
+            font_size: 22
+            size_hint:(.4,.4)
+            background_color: (157/255,157/255,167/255,1)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            on_release:
+                app.root.current= 'Menu'
+                root.manager.transition.direction= 'right'
+
+<Insert>:
+    name: 'Insert'
+    Image:
+        source: 'BG1.jpg'
+
+    BoxLayout:
+
+        orientation: 'vertical'
+        size: root.width, root.height
+        spacing: 15
+        padding: 15
+
+        GridLayout:
+            size: root.width, root.height
+            cols: 2
+
+            Label:
+                text: 'Roll No.'
+                font_size: 22
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            TextInput:
+                font_size: 22
+                id: rollno
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            Label:
+                text: 'Name: '
+                font_size: 22
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            TextInput:
+                font_size: 22
+                id: name
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            Label:
+                text: 'Class: '
+                font_size: 22
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            TextInput:
+
+                font_size: 22
+                id: cls
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            Label:
+                text: 'Favorite Anime/Show: '
+                font_size: 22
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            TextInput:
+                font_size: 22
+                id: fav
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            Label:
+                text: 'Wants To Become: '
+                font_size: 22
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            TextInput:
+                font_size: 22
+                id: wish
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_name:'Lhandw'
+                size_hint: (.3,.3)
+
+            Button:
+                text: 'Clear'
+                font_size: 22
+                background_color: (157/255,157/255,167/255,1)
+                size_hint: (.5,.5)
+                on_release: root.clear()
+
+            Button:
+                text: 'Insert'
+                font_size: 22
+                background_color: (157/255,157/255,167/255,1)
+                size_hint: (.5,.5)
+                on_release:
+                    root.insert()
+
+        Label:
+            id: popup
+            font_name:'Lhandw'
+            font_size:24
+            size_hint: (.4,.2)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+
+        Button:
+            text: 'Go Back'
+            font_size: 22
+            background_color: (157/255,157/255,167/255,1)
+            size_hint: (.4,.2)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            on_release:
+                app.root.current= 'Records'
+                root.manager.transition.direction= 'right'
+
+<Update>:
+    name: 'Update'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        spacing: 15
+        padding: 15
+
+        GridLayout:
+            cols:2
+            size: root.width, root.height
+
+            Label:
+                text: 'Roll No. of the Record to be updated:'
+                font_size: 18
+                font_name:'Lhandw'
+
+            TextInput:
+                id: rollno
+                font_name:'Lhandw'
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                font_size: 22
+
+            Button:
+                size_hint: (.8,.8)
+                text: 'Check'
+                background_color: (157/255,157/255,167/255,1)
+                font_size: 22
+                on_release: root.check()
+
+            Button:
+                size_hint: (.8,.8)
+                text: 'Clear'
+                background_color: (157/255,157/255,167/255,1)
+                font_size: 22
+                on_release: root.clear()
+
+        TextInput:
+            font_name:'Lhandw'
+            id: check
+            valign: 'middle'
+            halign: 'center'
+            multiline: 'true'
+            font_size: 22
+
+        GridLayout:
+            size: root.width, root.height
+            cols: 2
+
+            Label:
+                text: 'What Do you want to update?'
+                font_size: 22
+                font_name:'Lhandw'
+
+            TextInput:
+                id: parameter
+                font_name:'Lhandw'
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                font_size: 22
+
+            Label:
+                text: 'Enter New Value: '
+                font_size: 22
+                font_name:'Lhandw'
+
+            TextInput:
+                id: newval
+                font_name:'Lhandw'
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                font_size: 22
+
+        Label:
+            id: popup
+            font_name:'Lhandw'
+            font_size: 22
+
+        GridLayout:
+            size: root.width, root.height
+            cols: 2
+
+            Button:
+                text: 'Go Back'
+                font_size: 22
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Records'
+                    root.manager.transition.direction= 'right'
+
+            Button:
+                text: 'Update'
+                font_size: 22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.update()
+
+<Delete>:
+    name: 'Delete'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        spacing: 15
+        padding: 15
+
+        GridLayout:
+            cols:2
+            size: root.width, root.height
+
+            Label:
+                text: 'Roll No. of the Record to be deleted:'
+                font_size: 18
+                font_name:'Lhandw'
+
+            TextInput:
+                id: rollno
+                font_name:'Lhandw'
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                font_size: 22
+
+            Button:
+                size_hint: (.8,.8)
+                text: 'Check'
+                background_color: (157/255,157/255,167/255,1)
+                font_size: 22
+                on_release: root.check()
+
+            Button:
+                size_hint: (.8,.8)
+                text: 'Clear'
+                background_color: (157/255,157/255,167/255,1)
+                font_size: 22
+                on_release: root.clear()
+
+        TextInput:
+            id: check
+            font_name:'Lhandw'
+            valign: 'middle'
+            halign: 'center'
+            multiline: 'true'
+            font_size: 22
+
+        Label:
+            text:'Delete via the Delete button, else use Clear.'
+            font_size:22
+            font_name:'Lhandw'
+
+        GridLayout:
+            size: root.width, root.height
+            cols: 2
+
+            Button:
+                text: 'Go Back'
+                font_size: 22
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Records'
+                    root.manager.transition.direction= 'right'
+
+            Button:
+                text: 'Delete'
+                font_size: 22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.delete()
+
+        Label:
+            id: popup
+            font_name:'Lhandw'
+            font_size: 22
+
+<Search>:
+    name: 'Search'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        size:root.width,root.height
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:2
+            size:root.width,root.height
+
+            Label:
+                text:'Roll No. of the Record to Be Searched: '
+                font_size:22
+                font_name:'Lhandw'
+                size_hint: (.7,.7)
+
+            TextInput:
+                id: rollno
+                font_name:'Lhandw'
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                size_hint:(.4,.1)
+                font_size: 32
+        GridLayout:
+            cols:3
+            size:root.width,root.height
+
+            Button:
+                text: 'Go Back'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Records'
+                    root.manager.transition.direction= 'right'
+
+            Button:
+                text: 'Search'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.search()
+
+            Button:
+                text: 'Clear'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.clear()
+
+        Label:
+            id: result
+            font_name:'Lhandw'
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_size:22
+
+
