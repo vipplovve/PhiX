@@ -116,7 +116,8 @@ class Calculator(Screen):
                 self.ids.val.text = 'ERROR'
 
         elif '!' in x:
-            n = int(x[0])
+            l = x.split('!')
+            n = int(l[0])
             f = 1
             if n != 0:
                 for i in range(1, n + 1):
